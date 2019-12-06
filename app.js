@@ -4,7 +4,8 @@
 //   console.log("Hello World!");
 //   // geoFindMe();
 //   var p = await getLatitude();
-//   console.log("power" + p);
+//   var q = await getLongitude();
+//   console.log("Lattitude" + p + "Longitude" + q);
 // }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -55,7 +56,7 @@ function _loadEdit() {
   _loadEdit = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee() {
-      var p;
+      var p, q;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch ((_context.prev = _context.next)) {
@@ -67,9 +68,14 @@ function _loadEdit() {
 
             case 3:
               p = _context.sent;
-              console.log("power" + p);
+              _context.next = 6;
+              return getLongitude();
 
-            case 5:
+            case 6:
+              q = _context.sent;
+              console.log("Lattitude " + p + " Longitude " + q);
+
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -79,8 +85,6 @@ function _loadEdit() {
   );
   return _loadEdit.apply(this, arguments);
 }
-
-
 
 // function geoFindLocation() {
 //   if (!navigator.geolocation) {
@@ -153,4 +157,55 @@ function _getLatitude() {
     })
   );
   return _getLatitude.apply(this, arguments);
+}
+
+// async function getLongitude() {
+//   let longitude = "";
+//   await geoFindLocation()
+//     .then(position => {
+//       longitude = position.coords.longitude.toFixed(6);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+//   console.log(longitude);
+//   return longitude;
+// }
+
+function getLongitude() {
+  return _getLongitude.apply(this, arguments);
+}
+
+function _getLongitude() {
+  _getLongitude = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee() {
+      var longitude;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch ((_context.prev = _context.next)) {
+            case 0:
+              longitude = "";
+              _context.next = 3;
+              return geoFindLocation()
+                .then(function(position) {
+                  longitude = position.coords.longitude.toFixed(6);
+                })
+                ["catch"](function(err) {
+                  console.log(err);
+                });
+
+            case 3:
+              console.log(longitude);
+              return _context.abrupt("return", longitude);
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    })
+  );
+  return _getLongitude.apply(this, arguments);
 }
